@@ -1,13 +1,9 @@
-/* BDS Motos: marca del checkout nativo de VTEX. Paleta, tipografía y rojo de marca alineados con el storefront; no oculta ni mueve campos nativos. */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap");
+/* BDS Motos: marca del checkout con la app Checkout UI Custom (layout moderno activo). Los colores de marca salen de la pestaña Colors de la app (ver README); este CSS agrega tipografía, esquinas, textos rojos sobre claro y las bandas de encabezado y pie. No oculta ni mueve campos nativos. No usa @import: las fuentes se cargan con <link> desde la plantilla checkout-header. */
 
 :root {
   --bds-red: #B70000;
   --bds-red-dark: #8A0000;
   --bds-text: #141414;
-  --bds-text-muted: #5C5C5C;
-  --bds-border: #DEDEDE;
-  --bds-page-bkg: #F5F5F5;
   --bds-black: #000000;
   --bds-dark-surface: #171717;
   --bds-on-dark-text: #F5F5F5;
@@ -16,148 +12,85 @@
   --bds-face-body: "Inter", -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
 }
 
-/* ---------- Base: tipografía, texto y fondo ---------- */
-body,
-input,
-select,
-textarea,
-button {
+/* ---------- Tipografía: la app fija Roboto en body, campos y botones; el prefijo html body evita depender del orden de las reglas ---------- */
+html body,
+html body input,
+html body select,
+html body textarea,
+html body button,
+html body .btn {
   font-family: var(--bds-face-body);
 }
 
-body {
-  padding-top: 0;
-  background-color: var(--bds-page-bkg);
-  color: var(--bds-text);
-}
-
-/* Inter es más ancha que Helvetica: evita que "$" y el importe se partan en dos líneas */
+/* Inter es más ancha que Roboto: evita que "$" y el importe se partan en dos líneas */
 .monetary {
   white-space: nowrap;
 }
 
-h1,
-h2,
-h3,
-.h1,
-.h2,
-.h3,
-.accordion-heading .accordion-toggle,
-.step-title,
-.cart-title,
-#cart-title,
-#orderform-title {
+html body h1,
+html body h2,
+html body h3,
+html body .h1,
+html body .h2,
+html body .h3,
+html body .accordion-heading .accordion-toggle,
+html body .step-title,
+html body .btn {
   font-family: var(--bds-face-title);
-  color: var(--bds-text);
 }
 
-h1,
-h2,
-h3 {
-  font-weight: 700;
-}
-
-/* ---------- Links ---------- */
-a,
-.btn-link {
-  color: var(--bds-red-dark);
-}
-
-a:hover,
-a:focus,
-.btn-link:hover,
-.btn-link:focus {
-  color: var(--bds-red-dark);
-}
-
-/* ---------- Botones: primario en rojo de marca, Montserrat 800 ---------- */
-.btn {
-  font-family: var(--bds-face-title);
+html body .btn {
   font-weight: 800;
+}
+
+/* ---------- Pie al final de la página: la app deja 40px de relleno bajo el contenido para su propio pie; en escritorio se quita para que la banda negra cierre la página (en móvil se conserva por la barra fija del botón de pago) ---------- */
+@media (min-width: 769px) {
+  html body {
+    padding-bottom: 0 !important;
+  }
+}
+
+/* ---------- Esquinas: la app redondea los botones a 30px; la marca usa 4px ---------- */
+html body .btn,
+html body .coupon-data a,
+html body .shp-open-options {
   border-radius: 4px;
-  text-shadow: none;
 }
 
-.btn-success,
-.btn-success:visited,
-.submit.btn-success,
-.btn-primary {
-  background-color: var(--bds-red);
-  background-image: none;
-  border-color: var(--bds-red);
-  color: #FFFFFF;
-  text-shadow: none;
-}
-
-.btn-success:hover,
-.btn-success:focus,
-.btn-success:active,
-.btn-success.active,
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active {
-  background-color: var(--bds-red-dark);
-  background-image: none;
-  border-color: var(--bds-red-dark);
-  color: #FFFFFF;
-}
-
-.btn-success.disabled,
-.btn-success[disabled] {
-  background-color: var(--bds-red);
-  border-color: var(--bds-red);
-  opacity: 0.5;
-}
-
-/* Botones secundarios (p. ej. "Calcular"): texto en el rojo oscuro sobre fondo atenuado */
-.btn-secondary,
-.btn-default,
-.btn-info {
-  background-color: #EBEBEB;
-  background-image: none;
-  border-color: var(--bds-border);
+/* ---------- Links y texto rojo sobre claro: el rojo oscuro de marca ---------- */
+html body a,
+html body .btn-link {
   color: var(--bds-red-dark);
-  text-shadow: none;
 }
 
-.btn-secondary:hover,
-.btn-default:hover,
-.btn-info:hover {
-  background-color: var(--bds-border);
+html body a:hover,
+html body a:focus,
+html body .btn-link:hover,
+html body .btn-link:focus {
   color: var(--bds-red-dark);
 }
 
 /* Clases de utilidad azules del checkout (Calcular envío, código postal enlazado): las utilidades usan !important, por eso aquí también */
-.shp-open-options {
-  background-color: #EBEBEB !important;
-  border-color: var(--bds-border) !important;
-  color: var(--bds-red-dark) !important;
-  font-family: var(--bds-face-title);
-  font-weight: 800;
-}
-
-.shp-open-options:hover,
-.shp-open-options:focus {
-  background-color: var(--bds-border) !important;
-  border-color: var(--bds-border) !important;
-}
-
 .blue,
 .hover-blue:hover {
   color: var(--bds-red-dark) !important;
 }
 
-/* ---------- Campos y foco ---------- */
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="tel"]:focus,
-input[type="password"]:focus,
-input[type="number"]:focus,
-select:focus,
-textarea:focus {
+.shp-open-options {
+  border-color: var(--bds-red) !important;
+  color: var(--bds-red-dark) !important;
+}
+
+/* ---------- Foco de campos ---------- */
+html body input[type="text"]:focus,
+html body input[type="email"]:focus,
+html body input[type="tel"]:focus,
+html body input[type="password"]:focus,
+html body input[type="number"]:focus,
+html body select:focus,
+html body textarea:focus {
   border-color: var(--bds-red);
   box-shadow: 0 0 0 2px rgb(183 0 0 / 30%);
-  outline: 0;
 }
 
 /* ---------- Encabezado de marca: el HTML se inyecta directo en body, así que .bds-header es la banda oscura a todo el ancho y .bds-header__inner limita el contenido ---------- */
@@ -175,7 +108,7 @@ textarea:focus {
   justify-content: space-between;
   gap: 16px;
   box-sizing: border-box;
-  max-width: 970px;
+  max-width: 980px;
   margin: 0 auto;
   padding: 14px 20px;
 }
@@ -191,8 +124,8 @@ textarea:focus {
   height: 36px;
 }
 
-.bds-header__cancel,
-.bds-header__cancel:visited {
+.bds-header .bds-header__cancel,
+.bds-header .bds-header__cancel:visited {
   color: var(--bds-on-dark-text);
   font-family: var(--bds-face-title);
   font-size: 13px;
@@ -205,8 +138,8 @@ textarea:focus {
   padding: 8px 14px;
 }
 
-.bds-header__cancel:hover,
-.bds-header__cancel:focus {
+.bds-header .bds-header__cancel:hover,
+.bds-header .bds-header__cancel:focus {
   color: var(--bds-on-dark-text);
   background: rgb(255 255 255 / 10%);
   border-color: rgb(255 255 255 / 60%);
@@ -224,34 +157,17 @@ textarea:focus {
 
 .bds-footer__inner {
   box-sizing: border-box;
-  max-width: 970px;
+  max-width: 980px;
   margin: 0 auto;
   padding: 16px;
   text-align: center;
 }
 
-.bds-footer__text {
+.bds-footer .bds-footer__text {
   margin: 0;
   color: var(--bds-on-dark-muted);
   font-size: 11.5px;
   line-height: 1.4;
-}
-
-/* En escritorio el contenido nativo arranca en el borde del contenedor de 970px; el encabezado se alinea con él */
-@media (min-width: 991px) {
-  .bds-header__inner {
-    padding-right: 0;
-    padding-left: 0;
-  }
-}
-
-/* En móvil el checkout aplica padding lateral al body: las bandas lo compensan para llegar de borde a borde */
-@media (max-width: 767px) {
-  .bds-header,
-  .bds-footer {
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-  }
 }
 
 @media (max-width: 480px) {
@@ -263,8 +179,8 @@ textarea:focus {
     height: 28px;
   }
 
-  .bds-header__cancel,
-  .bds-header__cancel:visited {
+  .bds-header .bds-header__cancel,
+  .bds-header .bds-header__cancel:visited {
     font-size: 11.5px;
     padding: 6px 10px;
   }
