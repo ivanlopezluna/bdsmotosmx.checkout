@@ -170,6 +170,13 @@ html body textarea:focus {
   line-height: 1.4;
 }
 
+/* En móvil la barra fija nativa "Comprar ahora" (56px, solo en el paso de pago) quedaría sobre el pie: se reserva su alto para que el pie se vea completo al llegar al final de la página */
+@media (max-width: 768px) {
+  html body .bds-footer {
+    padding-bottom: 56px;
+  }
+}
+
 @media (max-width: 480px) {
   .bds-header__inner {
     padding: 12px 14px;

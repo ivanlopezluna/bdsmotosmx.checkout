@@ -12,10 +12,24 @@ El CSS y los colores se publican en la app **Checkout UI Custom** (`vtex.checkou
 | Sección **Colors** de este README | App Checkout UI Custom > pestaña **Colors** (un color por campo) |
 | `checkout-header.html` | Admin > Storefront > Checkout > pestaña **Código** > **HTML** > `checkout-header` (trae el `<link>` de las fuentes Inter y Montserrat, el logo y "Cancelar y volver al catálogo") |
 | `checkout-footer.html` | Admin > Storefront > Checkout > pestaña **Código** > **HTML** > `checkout-footer` (pie de marca) |
-| Pestaña **Layout** | No se pega nada: solo el layout más moderno que ofrece la app, sin cambiar orden de pasos, campos ni número de pedido. La opción elegida se registra en este README al publicar |
+| Pestaña **Layout** | No se pega nada: solo se eligen las opciones de la sección **Layout** de este README, sin cambiar orden de pasos, campos ni número de pedido |
 | Pestaña **JavaScript** | No se usa: no hay `checkout6-custom.js` |
 
+## Layout
+
+Opciones elegidas en la pestaña Layout de la app y comprobadas en el checkout publicado (clases que la app agrega al `<body>`):
+
+| Opción | Valor publicado | Clase en el `<body>` |
+|---|---|---|
+| Payment option as accordion | Activada (Accordion) | `v-custom-paymentBuilder-accordion` |
+| Hide email step | Activada (paso de correo oculto) | `js-vcustom-hideEmailStep` |
+| Carrito vertical | No es una opción de la pestaña: la app agrega siempre la clase `body-cart-vertical` (no existe una variante horizontal en su CSS ni aparece en las 13 opciones de la pestaña) | `body-cart-vertical` |
+
+El resto de las opciones de la pestaña (precio unitario, campo de notas, formulario de Google, tamaños y bordes) quedan como estaban; el campo de notas no está activo (el `<body>` no trae `js-vcustom-showNoteField`).
+
 ## Colors
+
+Publicados el 2026-10-28 en la pestaña Colors de la app (los 20 valores de la tabla).
 
 Valores de la pestaña Colors, tomados de UI Tokens. Son los 20 campos de la pestaña, con el uso que les da la app:
 
@@ -50,3 +64,9 @@ Valores de la pestaña Colors, tomados de UI Tokens. Son los 20 campos de la pes
 - El HTML de `checkout-header` y `checkout-footer` se inyecta directo en `<body>` (sin `div.container` envolvente), por eso `.bds-header` y `.bds-footer` son las bandas de fondo y sus `__inner` limitan el ancho (980px, igual al ancho máximo del contenido de la app). El CSS y los dos HTML deben pegarse juntos, porque el CSS depende de esa estructura.
 - La configuración es de toda la cuenta: cada publicación aplica de inmediato al checkout usado desde el Deploy Preview y desde producción.
 - No se oculta ni se mueve ningún campo nativo del checkout.
+
+## Observaciones conocidas
+
+- El modal de conflicto de correo (`vtex.email-checkout-conflict`) usa el azul propio de la app (`#1a73e8`) y no sigue la paleta de la marca. Se decidió no sobrescribirlo.
+- El botón azul flotante (vtex-cartman) en la esquina inferior derecha es propio de la plataforma y no se estiliza.
+- En móvil (hasta 768px) el pie reserva 56px de espacio inferior para que la barra fija nativa ("Proceder al pago" en el carrito, "Comprar ahora" en el pago) no tape el texto del pie; en identificación y envío, que no tienen barra, ese espacio queda como franja negra extra.
