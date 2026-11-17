@@ -8,23 +8,30 @@
   --bds-dark-surface: #171717;
   --bds-on-dark-text: #F5F5F5;
   --bds-on-dark-muted: #9A9A9A;
-  --bds-face-title: "Montserrat", sans-serif;
-  --bds-face-body: "Inter", -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
+  --bds-face-body: "DM Sans", -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
+  --bds-face-title: "DM Sans", -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
+  --bds-face-button: "DM Sans", -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
 }
 
 /* ---------- Tipografía: la app fija Roboto en body, campos y botones; el prefijo html body evita depender del orden de las reglas ---------- */
 html body,
 html body input,
 html body select,
-html body textarea,
-html body button,
-html body .btn {
+html body textarea {
   font-family: var(--bds-face-body);
 }
 
-/* Inter es más ancha que Roboto: evita que "$" y el importe se partan en dos líneas */
+/* Evita que "$" y el importe se partan en dos líneas; se conserva como salvaguarda y es inocuo con DM Sans */
 .monetary {
   white-space: nowrap;
+}
+
+/* Labels y campos con peso 500; el resto del texto queda en 400 */
+html body label,
+html body input,
+html body select,
+html body textarea {
+  font-weight: 500;
 }
 
 html body h1,
@@ -34,9 +41,13 @@ html body .h1,
 html body .h2,
 html body .h3,
 html body .accordion-heading .accordion-toggle,
-html body .step-title,
-html body .btn {
+html body .step-title {
   font-family: var(--bds-face-title);
+}
+
+html body button,
+html body .btn {
+  font-family: var(--bds-face-button);
 }
 
 html body .btn {
@@ -127,7 +138,7 @@ html body textarea:focus {
 .bds-header .bds-header__cancel,
 .bds-header .bds-header__cancel:visited {
   color: var(--bds-on-dark-text);
-  font-family: var(--bds-face-title);
+  font-family: var(--bds-face-button);
   font-size: 13px;
   font-weight: 700;
   line-height: 1.3;

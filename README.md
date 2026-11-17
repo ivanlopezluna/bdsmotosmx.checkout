@@ -10,7 +10,7 @@ El CSS y los colores se publican en la app **Checkout UI Custom** (`vtex.checkou
 |---|---|
 | `checkout6-custom.css` | App Checkout UI Custom > pestaña **CSS** (activar el interruptor "Active" y publicar) |
 | Sección **Colors** de este README | App Checkout UI Custom > pestaña **Colors** (un color por campo) |
-| `checkout-header.html` | Admin > Storefront > Checkout > pestaña **Código** > **HTML** > `checkout-header` (trae el `<link>` de las fuentes Inter y Montserrat, el logo y "Cancelar y volver al catálogo") |
+| `checkout-header.html` | Admin > Storefront > Checkout > pestaña **Código** > **HTML** > `checkout-header` (trae el `<link>` de la fuente DM Sans, el logo y "Cancelar y volver al catálogo") |
 | `checkout-footer.html` | Admin > Storefront > Checkout > pestaña **Código** > **HTML** > `checkout-footer` (pie de marca) |
 | Pestaña **Layout** | No se pega nada: solo se eligen las opciones de la sección **Layout** de este README, sin cambiar orden de pasos, campos ni número de pedido |
 | Pestaña **JavaScript** | No se usa: no hay `checkout6-custom.js` |
@@ -59,7 +59,7 @@ Valores de la pestaña Colors, tomados de UI Tokens. Son los 20 campos de la pes
 ## Notas
 
 - Orden de carga: la app arma `checkout6-custom.css` con la salida de `vtex.email-checkout-conflict`, luego su plantilla (con los Colors y el Layout aplicados) y al final el CSS de la pestaña CSS. El CSS de este repo va al final y usa `html body` como prefijo en las reglas que pisan a la app; no usa `@import`, así que no depende de la posición.
-- Las fuentes (Inter y Montserrat) se cargan con `<link>` desde Google Fonts en `checkout-header.html`. El campo "Font family" de la pestaña Layout puede quedarse como está: el CSS fija Inter y Montserrat por encima.
+- La fuente (DM Sans variable, `opsz` y `wght` 400..800, `display=swap`, sin JetBrains Mono) se carga con `<link>` desde Google Fonts en `checkout-header.html`. El CSS define tres variables por rol, todas en DM Sans: `--bds-face-body` (cuerpo, campos y labels), `--bds-face-title` (títulos) y `--bds-face-button` (botones); cambiar la fuente de un rol solo requiere cambiar su variable. Pesos: texto 400, labels y campos 500, botones 800. El campo "Font family" de la pestaña Layout puede quedarse como está: el CSS fija DM Sans por encima.
 - El logo SVG va en línea dentro del encabezado, sin archivos externos.
 - El HTML de `checkout-header` y `checkout-footer` se inyecta directo en `<body>` (sin `div.container` envolvente), por eso `.bds-header` y `.bds-footer` son las bandas de fondo y sus `__inner` limitan el ancho (980px, igual al ancho máximo del contenido de la app). El CSS y los dos HTML deben pegarse juntos, porque el CSS depende de esa estructura.
 - La configuración es de toda la cuenta: cada publicación aplica de inmediato al checkout usado desde el Deploy Preview y desde producción.
