@@ -64,6 +64,7 @@ Valores de la pestaña Colors, tomados de UI Tokens. Son los 20 campos de la pes
 - El HTML de `checkout-header` y `checkout-footer` se inyecta directo en `<body>` (sin `div.container` envolvente), por eso `.bds-header` y `.bds-footer` son las bandas de fondo y sus `__inner` limitan el ancho (980px, igual al ancho máximo del contenido de la app). El CSS y los dos HTML deben pegarse juntos, porque el CSS depende de esa estructura.
 - La configuración es de toda la cuenta: cada publicación aplica de inmediato al checkout usado desde el Deploy Preview y desde producción.
 - No se oculta ni se mueve ningún campo nativo del checkout.
+- El diálogo de cierre de Mercado Pago (tarjeta de crédito, débito y efectivo) está al final de `checkout6-custom.css`, todo bajo `#app-modal-mercadopago` (hijo directo de `<html>`, fuera de `<body>`; la hoja de Mercado Pago carga después, por eso el id). Aplica a todos los botones de Mercado Pago con las clases `uiButton` (primario, rojo) y `fullscreenMessageButtonSecondary` (secundario, contorno rojo). Como el resto, el CSS se pega en la pestaña CSS de la app Checkout UI Custom, que es configuración de toda la cuenta y aplica de inmediato al Deploy Preview y a producción.
 
 ## Observaciones conocidas
 

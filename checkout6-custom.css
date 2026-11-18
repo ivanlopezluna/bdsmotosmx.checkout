@@ -203,3 +203,69 @@ html body textarea:focus {
     padding: 6px 10px;
   }
 }
+
+/* ---------- Diálogo de cierre de Mercado Pago: vive en #app-modal-mercadopago, hijo directo de <html> fuera de <body>, así que no se usa el prefijo body; la hoja de Mercado Pago carga después de esta, por eso todo se ancla al id para ganar por especificidad. Solo colores, tipografía, bordes y radios: no se toca layout, tamaños ni textos ---------- */
+#app-modal-mercadopago .mercadopago-mercadopago-app-2-x-layoutMain {
+  background: #FFFFFF;
+  border-radius: 4px;
+}
+
+#app-modal-mercadopago .mercadopago-mercadopago-app-2-x-fullscreenMessage {
+  background: rgb(255 255 255 / 99%);
+}
+
+#app-modal-mercadopago h1.mercadopago-mercadopago-app-2-x-fullscreenMessageTitle {
+  color: var(--bds-text);
+  font-family: var(--bds-face-title);
+}
+
+#app-modal-mercadopago p.mercadopago-mercadopago-app-2-x-fullscreenMessageMessage {
+  color: #5C5C5C;
+  font-family: var(--bds-face-body);
+}
+
+/* Botón primario (todos los botones de Mercado Pago con esta clase): rojo de marca, texto blanco, radio 4px, peso 800 */
+#app-modal-mercadopago button.mercadopago-mercadopago-app-2-x-uiButton {
+  background: var(--bds-red);
+  border-color: var(--bds-red);
+  border-radius: 4px;
+  color: #FFFFFF;
+  font-family: var(--bds-face-button);
+  font-weight: 800;
+}
+
+#app-modal-mercadopago button.mercadopago-mercadopago-app-2-x-uiButton:hover,
+#app-modal-mercadopago button.mercadopago-mercadopago-app-2-x-uiButton:focus {
+  background: var(--bds-red-dark);
+  border-color: var(--bds-red-dark);
+  color: #FFFFFF;
+}
+
+#app-modal-mercadopago button.mercadopago-mercadopago-app-2-x-uiButton .mercadopago-mercadopago-app-2-x-uiButtonText {
+  color: inherit;
+  font-family: var(--bds-face-button);
+  font-weight: 800;
+}
+
+/* Botón secundario: contorno rojo y texto rojo oscuro sobre blanco; la clase se duplica para ganarle al primario si el botón también lleva uiButton, de modo que nunca se vea como el primario */
+#app-modal-mercadopago button.mercadopago-mercadopago-app-2-x-fullscreenMessageButtonSecondary.mercadopago-mercadopago-app-2-x-fullscreenMessageButtonSecondary {
+  background: #FFFFFF;
+  border: 1px solid var(--bds-red);
+  border-radius: 4px;
+  color: var(--bds-red-dark);
+  font-family: var(--bds-face-button);
+  font-weight: 800;
+}
+
+#app-modal-mercadopago button.mercadopago-mercadopago-app-2-x-fullscreenMessageButtonSecondary.mercadopago-mercadopago-app-2-x-fullscreenMessageButtonSecondary:hover,
+#app-modal-mercadopago button.mercadopago-mercadopago-app-2-x-fullscreenMessageButtonSecondary.mercadopago-mercadopago-app-2-x-fullscreenMessageButtonSecondary:focus {
+  background: #F7E0E0;
+  border-color: var(--bds-red-dark);
+  color: var(--bds-red-dark);
+}
+
+#app-modal-mercadopago button.mercadopago-mercadopago-app-2-x-fullscreenMessageButtonSecondary .mercadopago-mercadopago-app-2-x-uiButtonText {
+  color: inherit;
+  font-family: var(--bds-face-button);
+  font-weight: 800;
+}
